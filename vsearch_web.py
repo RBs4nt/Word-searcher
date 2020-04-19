@@ -5,13 +5,13 @@ app = Flask(__name__) # Creating a Web Flask application object
 
 
 def log_request(req: 'flask_request', res: str) -> None:
-"""Records specific attributes of the request and response made in the application in a file"""
+    """Records specific attributes of the request and response made in the application in a file"""
     with open('vsearch.log', 'a') as log:
         print(req.form, req.remote_addr, req.user_agent, res, file=log, sep='|')
 
 @app.route('/search', methods=['POST'])
 def do_search() -> 'html':
-"""Information collection page for search, phrase and letters"""
+    """Information collection page for search, phrase and letters"""
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are you results:'
@@ -25,13 +25,13 @@ def do_search() -> 'html':
 @app.route('/')
 @app.route('/entry')
 def entry_page() -> 'html':
-"""Home page"""
+    """Home page"""
     return render_template('entry.html', 
                            the_title='Welcome to SeArCh4Latters on the Web!!')
 
 @app.route('/viewlog')
 def view_the_log() -> 'html':
-"""Returns template with elegant view in table format for logs"""
+    """Returns template with elegant view in table format for logs"""
     contents = []
     with open('vsearch.log') as log:
         for line in log: 

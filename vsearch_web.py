@@ -3,7 +3,6 @@ from vsearch import search4letters
 
 app = Flask(__name__) # Creating a Web Flask application object
 
-
 def log_request(req: 'flask_request', res: str) -> None:
     """Records specific attributes of the request and response made in the application in a file"""
     with open('vsearch.log', 'a') as log:
